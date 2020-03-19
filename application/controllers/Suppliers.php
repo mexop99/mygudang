@@ -1,11 +1,11 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Home extends CI_Controller{
+class Suppliers extends CI_Controller{
     public function index()
     {
-        $data['title'] = "MyGudang | Home";
+        $data['title'] = "MyGudang | Suppliers";
         $this->load->view('template/header', $data);
-        $this->load->view('home/index');
+        $this->template->load('template/viewMainTemplate','suppliers/view_supplierData');
         $this->load->view('template/footer');
     }
 }
