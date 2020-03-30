@@ -129,14 +129,13 @@
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                            <a class="dropdown-item" href="#" onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
-
+                            <a class="dropdown-item" href="<?= base_url('auth/logout') ?>">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Logout
                             </a>
                             </a>
                     </li>
+                    
 
                 </ul>
             </nav>
@@ -284,25 +283,15 @@
 
 
                             <!-- LABEL -->
-                            <li class="nav-header">USERS</li>
+                            <?php if($this->session->userdata('roleid')==1): ?>
+                            <li class="nav-header">SETTINGS</li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
                                     <i class="nav-icon far fa-circle text-danger"></i>
-                                    <p class="text">Important</p>
+                                    <p class="text">Users</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="nav-icon far fa-circle text-warning"></i>
-                                    <p>Warning</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="nav-icon far fa-circle text-info"></i>
-                                    <p>Informational</p>
-                                </a>
-                            </li>
+                            <?php endif; ?>
                         </ul>
                     </nav>
                     <!-- /.sidebar-menu -->
@@ -318,9 +307,9 @@
 
             <footer class="main-footer">
                 <div class="float-right d-none d-sm-block">
-                    <b>Version</b> 3.0.2
+                    <b>Version</b> 0.0.1
                 </div>
-                <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+                <strong>Copyright &copy; 2014-2019 <a href="#">MyGudang.io</a>.</strong> All rights
                 reserved.
             </footer>
 

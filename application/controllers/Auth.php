@@ -13,6 +13,7 @@ class Auth extends CI_Controller
 
     public function index()
     {
+        check_already_login();
         $this->form_validation->set_rules('username', 'Username', 'trim|required');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
 
@@ -39,10 +40,11 @@ class Auth extends CI_Controller
             if ($user['is_active'] == 1) {
                 //cek password 
                 if (password_verify($password, $user['password'])) {
-                    $this->session->set_flashdata(
-                        'message',
-                        '<div class="alert alert-success" role="alert">Betul</div>'
+                    $params = array(
+                        "id" => $user['id'],
+                        "roleid" => $user['role_id']
                     );
+                    $this->session->set_userdata($params);
                     redirect(base_url());
                 } else {
                     $this->session->set_flashdata(
@@ -115,6 +117,15 @@ class Auth extends CI_Controller
             );
             redirect('auth');
         }
+    }
+
+
+
+    public function logout()
+    {
+        $params = array('id', 'roleid');
+        $this->session->unset_userdata($params);
+        redirect('auth');
     }
 }
 
