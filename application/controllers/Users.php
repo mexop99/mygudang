@@ -65,6 +65,7 @@ class Users extends CI_Controller
             $this->template->load('template/viewMainTemplate', 'user/user_add_form');
             $this->load->view('template/footer');
         }else {
+            $this->modelusers->regUser();
             redirect('users');
             
         }

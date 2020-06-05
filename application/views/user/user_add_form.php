@@ -34,26 +34,32 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-6 col-md-8">
+
                         <div class="form-group">
                             <label for="name">Full Name</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="Your Full Name" value="<?= set_value('name') ?>">
                         </div>
+
                         <div class="form-group">
                             <label for="username">Username</label>
                             <input type="email" class="form-control" id="username" name="username" placeholder="Type Your Email..." value="<?= set_value('username') ?>">
                             <?= form_error('username', '<small class="text-danger pl-3">', '</small>') ?>
                         </div>
+
                         <div class="form-group">
                             <label for="password">Password</label>
                             <input type="password" class="form-control" id="password" name="password" placeholder="******">
                             <?= form_error('password', '<small class="text-danger pl-3">', '</small>') ?>
                         </div>
+
                         <div class="form-group">
                             <label for="password2">Confirm Password</label>
                             <input type="password" class="form-control" id="password2" name="password2" placeholder="******">
                             <?= form_error('password', '<small class="text-danger pl-3">', '</small>') ?>
                         </div>
+
                     </div>
+
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="image">Image</label>

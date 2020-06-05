@@ -52,6 +52,20 @@ class ModelUsers extends CI_Model
         return $this->db->insert($this->_table, $this);
     }
 
+    public function regUser()
+    {
+        $post = $this->input->post();
+        $this->name = $post['name'];
+        $this->username = $post['username'];
+        $this->password = password_hash($post['password'], PASSWORD_DEFAULT);
+        $this->image = $post['image'];
+        $this->is_active = 1;
+        $this->role_id = $post['role_id'];
+        $this->time_created = time();
+
+        return $this->db->insert($this->_table, $this);
+    }
+
 
     /**
      * @param mixed $id
@@ -72,4 +86,6 @@ class ModelUsers extends CI_Model
         $this->db->select('id, name, username, role_id, is_active');
         return $this->db->get($this->_table)->result_array();
     }
+
+
 }
