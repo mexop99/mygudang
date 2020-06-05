@@ -9,7 +9,8 @@
 
             <form action="<?= base_url(); ?>auth/register" method="POST">
                 <div class="input-group mt-3">
-                    <input type="text" name="name" class="form-control" placeholder="Full name" autofocus>
+                    <input type="text" name="name" class="form-control" placeholder="Full name" autofocus
+                    value="<?= set_value('name'); ?>">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-user"></span>
@@ -17,7 +18,8 @@
                     </div>
                 </div>
                 <div class="input-group mt-3">
-                    <input type="text" name="username" class="form-control" placeholder="Email">
+                    <input type="text" name="username" class="form-control" placeholder="Email"
+                    value="<?= set_value('username'); ?>">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-envelope"></span>

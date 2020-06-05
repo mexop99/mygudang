@@ -1,9 +1,15 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+/**
+ * Class Auth
+ */
 class Auth extends CI_Controller
 {
 
+    /**
+     * @return void
+     */
     public function __construct()
     {
         parent::__construct();
@@ -11,6 +17,9 @@ class Auth extends CI_Controller
         $this->load->model('modelusers');
     }
 
+    /**
+     * @return void
+     */
     public function index()
     {
         check_already_login();
@@ -27,6 +36,9 @@ class Auth extends CI_Controller
         }
     }
 
+    /**
+     * @return void
+     */
     private function _login()
     {
         $username = $this->input->post('username');
@@ -42,7 +54,7 @@ class Auth extends CI_Controller
                 if (password_verify($password, $user['password'])) {
                     $params = array(
                         "id" => $user['id'],
-                        "roleid" => $user['role_id']
+                        "role_id" => $user['role_id']
                     );
                     $this->session->set_userdata($params);
                     redirect(base_url());
@@ -128,6 +140,3 @@ class Auth extends CI_Controller
         redirect('auth');
     }
 }
-
-
-

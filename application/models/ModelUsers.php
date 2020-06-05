@@ -4,22 +4,20 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class ModelUsers extends CI_Model
 {
 
-    private $_table ="users";
-    
+    private $_table = "users";
+
     public $name = "";
     public $username = "";
     public $password = "";
-    public $image = "dafault.jpg";
-    public $is_active=0;
-    public $role_id =0;
-    public $time_created =0;
+    public $image = "default.png";
+    public $is_active = 0;
+    public $role_id = 0;
+    public $time_created = 0;
 
 
-    
 
-
-    public function login($data)
-    {
+    // public function login($data)
+    // {
         // // $this->db->select('*');
         // $this->db->select('users');
         // $this->db->where('username', $data['username']);
@@ -27,26 +25,51 @@ class ModelUsers extends CI_Model
         // $query = $this->db->get();
         // // $query = $this->db->get_where('users', $data(''));
         // return $query;
-    }
+    // }
 
 
     public function login1($username)
     {
-        $user = $this->db->get_where('users', ['username'=> $username])->row_array();
+        $user = $this->db->get_where('users', ['username' => $username])->row_array();
         return $user;
     }
 
 
+    /**
+     * @return void
+     * fungsi registrasi untuk karyawan
+     */
     public function reg()
     {
         $post = $this->input->post();
-        $this->name= $post['name'];
+        $this->name = $post['name'];
         $this->username = $post['username'];
         $this->password = password_hash($post['password'], PASSWORD_DEFAULT);
-        $this->is_active=1;
-        $this->role_id=1;
-        $this->time_created=time();
+        $this->is_active = 1;
+        $this->role_id = 2;
+        $this->time_created = time();
 
         return $this->db->insert($this->_table, $this);
+    }
+
+
+    /**
+     * @param mixed $id
+     * 
+     * @return void
+     */
+    public function getById($id)
+    {
+        $user = $this->db->get_where('users', ['id' => $id])->row_array();
+        return $user;
+    }
+
+
+    /**
+     * @return void
+     */
+    public function getUsers(){
+        $this->db->select('id, name, username, role_id, is_active');
+        return $this->db->get($this->_table)->result_array();
     }
 }
