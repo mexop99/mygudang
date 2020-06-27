@@ -15,7 +15,7 @@ class Dashboard extends CI_Controller
         //load view
         $data['title'] = "MyGudang | Dashboard";
         $this->load->view('template/header', $data);
-        $this->template->load('template/viewMainTemplate', 'dashboard/dashboard', $user_data);
+        $this->template->load('template/globalTemplate', 'dashboard/dashboard', $user_data);
         $this->load->view('template/footer');
     }
 }

@@ -18,13 +18,13 @@ class ModelUsers extends CI_Model
 
     // public function login($data)
     // {
-        // // $this->db->select('*');
-        // $this->db->select('users');
-        // $this->db->where('username', $data['username']);
-        // $this->db->where('password', sha1($data['password']));
-        // $query = $this->db->get();
-        // // $query = $this->db->get_where('users', $data(''));
-        // return $query;
+    // // $this->db->select('*');
+    // $this->db->select('users');
+    // $this->db->where('username', $data['username']);
+    // $this->db->where('password', sha1($data['password']));
+    // $query = $this->db->get();
+    // // $query = $this->db->get_where('users', $data(''));
+    // return $query;
     // }
 
 
@@ -70,7 +70,7 @@ class ModelUsers extends CI_Model
     /**
      * @param mixed $id
      * 
-     * @return void
+     * @return row array, data array
      */
     public function getById($id)
     {
@@ -82,10 +82,37 @@ class ModelUsers extends CI_Model
     /**
      * @return void
      */
-    public function getUsers(){
+    public function getUsers()
+    {
         $this->db->select('id, name, username, role_id, is_active');
         return $this->db->get($this->_table)->result_array();
     }
 
+    /**
+     * @param null $id
+     * 
+     * @return if $id != null return result query (data query dari DB)
+     * harus di ->row() kan untuk bisa di akses di html
+     */
+    public function getUser($id = null)
+    {
+        if ($id != null) {
+            $user = $this->db->get_where('users', ['id' => $id]);
+            return $user;
+        }
+        $this->db->select('id, name, username, role_id, is_active');
+        return $this->db->get($this->_table)->result_array();
+    }
 
+    /**
+     * @param mixed $id
+     * 
+     * @return [type]
+     * untuk menghapus data user
+     */
+    public function delUser($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('users');
+    }
 }

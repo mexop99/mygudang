@@ -5,7 +5,7 @@ class Suppliers extends CI_Controller{
     {
         $data['title'] = "MyGudang | Suppliers";
         $this->load->view('template/header', $data);
-        $this->template->load('template/viewMainTemplate','suppliers/view_supplierData');
+        $this->template->load('template/globalTemplate','suppliers/view_supplierData');
         $this->load->view('template/footer');
     }
 }
